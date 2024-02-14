@@ -99,8 +99,8 @@ for(i=0;znak>0;i++)
 ## Úloha 1.3
 - Fibonacciho postupnosť sa počíta tak, že predošlé dva členy sa zrátajú dokopy tým nám vznikne nový tretí člen...
 - Tu sa náš druhý a tretí sčítajú a vznikne štvrtý atď.
-- Touto logikou vieme urobiť aj **for loop()**, ktorý bude pokračovať až dokým nenastane 
-    -
+- Touto logikou vieme urobiť aj **for loop()**, ktorý bude pokračovať až dokým nenastane že hodnota postupnosti bude rovná používateľom zadaná premenná
+  
 
 - najskôr som si definoval INT:
 ```
