@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <float.h> // Strojovy epsilon
 #define PI 3.14159265358979323846f //Definovanie pi pre Uloha 1.5
-#define EPSILON 0.000001f
+#define EPSILON 0.000000001f
 #include <string.h> // pre lepsie citanie retazca
 void rimske(int n)
 {
@@ -73,12 +73,12 @@ void rimske(int n)
 void prevod(int znak)
 {
     int pole[64], i;
-    for(i=0;znak>0;i++) //Vypocitanie poctu cifier
+    for(i=0;znak>0;i++) //Delenie a zistenie cifier
     {
         pole[i]=znak%2;
         znak=znak/2;
     }
-    for(i=i-1;i>=0;i--)  //Zistenie hodnoty cifry
+    for(i=i-1;i>=0;i--)  //Vypis cifier v opacnom poradi
     {
         printf("%d",pole[i]);
     }
@@ -119,8 +119,8 @@ void uloha3()
     printf("============ULOHA 1.3===========\n");
     printf("Zadajte cislo, ktore bude ohranicenie Fibonacciho postupnosti: ");
     scanf("%d",&k);
-    printf("Cisla vo Fibonacciho postupnosti su: %d",k,premenna1);
-    for(i=3;i<=k;i++)
+    printf("Cisla vo Fibonacciho postupnosti su: %d",premenna1);
+    for(i=1;i<=k;i++)
     {
         printf(", %d",nasledujuca_premenna);
         premenna = premenna1;
@@ -171,7 +171,7 @@ void uloha5()
     }
     float sinus(float radians, float epsilon) {
         float sinus_vysledok = 0.0f;
-        float predchadzajuci_sinus=1.0f;
+        float predchadzajuci_sinus=100.0f;
         int znamienko = 1, n = 1;
         while (fabsf(sinus_vysledok-predchadzajuci_sinus) > epsilon) //fabsf = absolutna hodnota
         {
@@ -196,8 +196,26 @@ void uloha5()
     scanf("%f",&uhol);
     if (volba=='2')
     {
+        while (uhol > 180) {
+            uhol -= 360;
+            }
+
+        while (uhol < -180) {
+            uhol += 360;
+            }
+
+        if (uhol > 90)
+        {
+            uhol = 180 - uhol;
+        }
+        else if (uhol < -90)
+        {
+            uhol = -180 - uhol;
+        }
+
         uhol= (uhol * PI) / 180.0f;
     }
+
     float vysledok = sinus(uhol,EPSILON);
     printf("Sinus uhla %.2f je priblizne %.10f\n", (uhol*180.0f)/PI, vysledok);
     printf("===Stacte ENTER pre ukoncenie===\n");getchar();
@@ -219,14 +237,14 @@ void uloha6()
         strncpy(zosekane_pole, retazec + 1, len - 3);
         zosekane_pole[len - 3] = '\0';
     } else {
-        fprintf(stderr, "Niekde nastala chyba!\n");
+        printf(stderr, "Niekde nastala chyba!\n");
         return;
     }
 
     int len1 = strlen(zosekane_pole);
 
     if (len1 < 11) {
-        fprintf(stderr, "Nie je dostatok dat pre citanie!\n");
+        printf(stderr, "Nie je dostatok dat pre citanie!\n");
         return;
     }
 
