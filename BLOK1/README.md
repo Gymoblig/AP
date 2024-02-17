@@ -8,12 +8,12 @@ Za tento blok môžeme získať maximálne 10 bodov, čiže netreba robiť všet
 
 
 
- - [Úloha 1.1 - Prevodník na DEC, HEXA a BIN (2b)](#)
- - [Úloha 1.2 - Prevodník na rímske číslice (2b)](#)
- - [Úloha 1.3 - Fibonacciho postupnosť (2b)](#)
- - [Úloha 1.4 - Strojový Epsilon (3b)](#)
- - [Úloha 1.5 - Sínus, Kosínus (4b)](#)
- - [Úloha 1.6 - IntelHEX a kontrolný súčet (4b)](#)
+ - [Úloha 1.1 - Prevodník na DEC, HEXA a BIN (2b)](#úloha-11)
+ - [Úloha 1.2 - Prevodník na rímske číslice (2b)](#úloha-12)
+ - [Úloha 1.3 - Fibonacciho postupnosť (2b)](#úloha-13)
+ - [Úloha 1.4 - Strojový Epsilon (3b)](#úloha-14)
+ - [Úloha 1.5 - Sínus, Kosínus (4b)](#úloha-15)
+ - [Úloha 1.6 - IntelHEX a kontrolný súčet (4b)](#úloha-16)
  ---
  ---
  ---
@@ -25,6 +25,7 @@ int cislo=33777, pismeno=0;
 ```
 - Následne jednoduchý **printf()** kde je požiadavka na používateľa o zadanie písmena (napr. X). Načítanie písmena som docielil pomocou **getchar()**, ale môže sa použiť aj **scanf()**
 - Ku koncu už je len prevod v **printf()**
+
 | Formátovanie            | Zápis                                                               |
 | ----------------- | ------------------------------------------------------------------ |
 | Desiatkové číslo | %d |
@@ -98,8 +99,8 @@ for(i=0;znak>0;i++)
 ## Úloha 1.3
 - Fibonacciho postupnosť sa počíta tak, že predošlé dva členy sa zrátajú dokopy tým nám vznikne nový tretí člen...
 - Tu sa náš druhý a tretí sčítajú a vznikne štvrtý atď.
-- Touto logikou vieme urobiť aj **for loop()**, ktorý bude pokračovať až dokým nenastane 
-    -
+- Touto logikou vieme urobiť aj **for loop()**, ktorý bude pokračovať až dokým nenastane že hodnota postupnosti bude rovná používateľom zadaná premenná
+  
 
 - najskôr som si definoval INT:
 ```
