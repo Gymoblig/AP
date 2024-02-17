@@ -68,11 +68,31 @@ void rimske(int n)
 
     return 0;
 
+    /*while (n > 0) {
+        switch (n % 100 / 10) {
+            case 9: printf("XC"); n -= 90; break;
+            case 4: printf("XL"); n -= 40; break;
+            case 3: printf("XXX"); n -= 30; break;
+            case 2: printf("XX"); n -= 20; break;
+            case 1: printf("X"); n -= 10; break;
+        }
+
+        switch (n % 10) {
+            case 9: printf("IX"); n -= 9; break;
+            case 4: printf("IV"); n -= 4; break;
+            case 3: printf("III"); n -= 3; break;
+            case 2: printf("II"); n -= 2; break;
+            case 1: printf("I"); n -= 1; break;
+        }
+    }
+
+    return 0;*/
+
 }
 
 void prevod(int znak)
 {
-    int pole[64], i;
+    int pole[16], i;
     for(i=0;znak>0;i++) //Delenie a zistenie cifier
     {
         pole[i]=znak%2;
@@ -120,18 +140,20 @@ void uloha3()
     printf("Zadajte cislo, ktore bude ohranicenie Fibonacciho postupnosti: ");
     scanf("%d",&k);
     printf("Cisla vo Fibonacciho postupnosti su: %d",premenna1);
-    for(i=1;i<=k;i++)
-    {
-        printf(", %d",nasledujuca_premenna);
+    while (premenna <= nasledujuca_premenna) {
+        printf(", %d", nasledujuca_premenna);
         premenna = premenna1;
         premenna1 = nasledujuca_premenna;
-        nasledujuca_premenna= premenna+premenna1;
-        if (nasledujuca_premenna>k) break;
+        nasledujuca_premenna = premenna + premenna1;
+        if (nasledujuca_premenna > k) {
+            break;
+        }
+        i++;
     }
     printf("\n===Stacte ENTER pre ukoncenie===\n");getchar();
     getchar();
 }
-
+/* TREBA OPRAVIT!!!!
 void uloha4()
 {
     system("cls");
@@ -152,8 +174,9 @@ void uloha4()
     printf("Double porovanie: \n%.10e\n%.10e\n",double_epsilon,DBL_EPSILON);
     printf("===Stacte ENTER pre ukoncenie===\n");getchar();
     getchar();
-}
+}*/
 
+/* TREBA TIEZ OPRAVIT!!!!!!!
 void uloha5()
 {
     system("cls");
@@ -220,7 +243,7 @@ void uloha5()
     printf("Sinus uhla %.2f je priblizne %.10f\n", (uhol*180.0f)/PI, vysledok);
     printf("===Stacte ENTER pre ukoncenie===\n");getchar();
     getchar();
-}
+}*/
 
 void uloha6()
 {
@@ -232,8 +255,9 @@ void uloha6()
     char zosekane_pole[100];
     unsigned char checksum = 0;
 
-    int len = strlen(retazec);
-    if (len >= 11) {
+
+    int len = strlen(retazec); //Definovanie dlzky
+    if (len >= 11) { // Odstranenie : a XX na konci spolu s \0
         strncpy(zosekane_pole, retazec + 1, len - 3);
         zosekane_pole[len - 3] = '\0';
     } else {
@@ -241,16 +265,16 @@ void uloha6()
         return;
     }
 
-    int len1 = strlen(zosekane_pole);
+    int len1 = strlen(zosekane_pole); //Definovanie novej dlzky
 
-    if (len1 < 11) {
-        printf(stderr, "Nie je dostatok dat pre citanie!\n");
+    if (len1 < 11) { //Osetrenie ak by retazec nebol dost dlhy
+        printf("Nie je dostatok dat pre citanie!\n");
         return;
     }
 
     for (int i = 0; i < len1 - 2; i += 2) {
-        unsigned int byte;
-        sscanf(zosekane_pole + i, "%2X", &byte);
+        unsigned int byte; //Definovanie nepriradeneho char (ma hodnotu od 0-255 = Dobry pre ASCII tabulky)
+        sscanf(zosekane_pole + i, "%2X", &byte); //sscanf - scanuje dva znaky a %2X je dvojznakovy hexadecimalny znak
         checksum += (unsigned char)byte;
     }
 
@@ -267,7 +291,7 @@ void main()
     while (1) {
         system("cls");
         printf("==========BLOK 1===========\n");
-        printf("Uloha 1.1 - Prevod cisel\nUloha 1.2 - Prevod cisla na rimske\nUloha 1.3 - Fibonacciho postupnost\nUloha 1.4 - Strojovy epsilon\nUloha 1.5 - Sinus pomocou Taylorovho radu\nUloha 1.6 - IntelHEX\n");
+        printf("Uloha 1.1 - Prevod cisel\nUloha 1.2 - Prevod cisla na rimske\nUloha 1.3 - Fibonacciho postupnost\n\033[9mUloha 1.4 - Strojovy epsilon\nUloha 1.5 - Sinus pomocou Taylorovho radu\033[0m\nUloha 1.6 - IntelHEX\n");
         printf("===========================\n");
         printf("Vyberte od 1 po 6 (pre ukoncenie stlacte Q): ");
         scanf("%c", &vyber);
